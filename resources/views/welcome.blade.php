@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Deys | Luxury 5-Star Hotel • Rooms • Banquet • Conference • Celebrations</title>
+  <!-- Add this inside <head> -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -33,13 +35,17 @@
             subtle: '0 10px 25px rgba(0,0,0,0.06)',
             lift: '0 20px 40px rgba(0,0,0,0.25)'
           },
-          fontFamily: {
-            /* Use system stack; swap with editorial serif via CSS if desired */
-          },
+        //   fontFamily: {
+        //     /* Use system stack; swap with editorial serif via CSS if desired */
+        //   },
           backgroundImage: {
             // Replace with your hero image URL or storage path
             'hero-deys': "url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1920&auto=format&fit=crop')"
-          }
+          },
+          fontFamily: {
+            calligraphy: ['"Great Vibes"', 'cursive'],
+            // ...other fonts...
+            },
         }
       }
     }
@@ -53,7 +59,7 @@
         <div class="flex items-center gap-3">
           <div class="h-9 w-9 rounded-xl bg-gold-400 flex items-center justify-center text-brand-900 font-bold">D</div>
           <div class="leading-tight">
-            <span class="font-semibold tracking-wide">Deys</span>
+            <span class="font-calligraphy text-2xl font-semibold tracking-wide">Dey's</span>
             <div class="text-[11px] uppercase tracking-[0.25em] text-white/70">Luxury Hotel</div>
           </div>
         </div>
