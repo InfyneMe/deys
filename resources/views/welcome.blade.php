@@ -59,7 +59,7 @@
         <div class="flex items-center gap-3">
           <div class="h-9 w-9 rounded-xl bg-gold-400 flex items-center justify-center text-brand-900 font-bold">D</div>
           <div class="leading-tight">
-            <span class="font-calligraphy text-2xl font-semibold tracking-wide">Dey's</span>
+            <span class="font-calligraphy text-2xl font-semibold tracking-widest">dey's</span>
             <div class="text-[11px] uppercase tracking-[0.25em] text-white/70">Luxury Hotel</div>
           </div>
         </div>
