@@ -1,609 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dey's - Luxury Hotel & Resort</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Premium Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'calligraphy': ['Dancing Script', 'cursive'],
-                        'luxury': ['Playfair Display', 'serif'],
-                        'modern': ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'gold': {
-                            50: '#fefdf8',
-                            100: '#fdf6e3',
-                            200: '#faecc1',
-                            300: '#f6de94',
-                            400: '#f1c965',
-                            500: '#eab308',
-                            600: '#d97706',
-                            700: '#b45309',
-                            800: '#92400e',
-                            900: '#78350f',
-                        },
-                        'sage': {
-                            50: '#f6f7f7',
-                            100: '#e3e8e8',
-                            200: '#c7d2d3',
-                            300: '#a4b5b7',
-                            400: '#7a9194',
-                            500: '#5f7578',
-                            600: '#526064',
-                            700: '#475154',
-                            800: '#3e4447',
-                            900: '#363a3c',
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 1s ease-out',
-                        'slide-up': 'slideUp 1.2s ease-out',
-                        'float': 'float 3s ease-in-out infinite',
-                        'scale-in': 'scaleIn 0.8s ease-out',
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(40px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-        
-        @keyframes scaleIn {
-            from { 
-                opacity: 0; 
-                transform: scale(0.95); 
-            }
-            to { 
-                opacity: 1; 
-                transform: scale(1); 
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .hero-overlay {
-            background: linear-gradient(135deg, 
-                rgba(95, 117, 120, 0.7) 0%, 
-                rgba(58, 76, 78, 0.6) 40%, 
-                rgba(47, 81, 84, 0.5) 70%, 
-                rgba(54, 58, 60, 0.8) 100%);
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .luxury-button {
-            background: linear-gradient(135deg, #f1c965, #eab308);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.2);
-        }
-        
-        .luxury-button:hover {
-            background: linear-gradient(135deg, #eab308, #d97706);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(234, 179, 8, 0.3);
-        }
-        
-        .input-modern {
-            transition: all 0.3s ease;
-            border: 2px solid #e5e7eb;
-        }
-        
-        .input-modern:focus {
-            border-color: #eab308;
-            box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.1);
-        }
-        
-        .video-overlay {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-        }
-        
-        .section-bg {
-            background: linear-gradient(135deg, #f6f7f7 0%, #e3e8e8 100%);
-        }
-        
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dey's | Luxury Hotel & Resort</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts: Calligraphy for brand + modern sans for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --gold:#D4AF37;
+      --deep:#0F172A; /* slate-900 like */
+      --ink:#0B1220;
+    }
+    .brand { font-family: 'Great Vibes', cursive; }
+    .copy  { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+
+    /* Premium glass cards */
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Subtle gold sheen */
+    .sheen {
+      position: relative;
+      overflow: hidden;
+    }
+    .sheen::after{
+      content:'';
+      position:absolute;
+      top:-120%;
+      left:-120%;
+      width:240%;
+      height:240%;
+      background: conic-gradient(from 210deg, transparent 0 30%, rgba(255,255,255,.18) 35% 40%, transparent 45% 100%);
+      transform: rotate(8deg);
+      transition: transform .8s ease;
+      pointer-events:none;
+    }
+    .sheen:hover::after{
+      transform: translateX(8%) translateY(8%) rotate(12deg);
+    }
+
+    /* Parallax containers */
+    .parallax {
+      perspective: 1px;
+      transform-style: preserve-3d;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .layer-back   { transform: translateZ(-1px) scale(2); }
+    .layer-mid    { transform: translateZ(-.35px) scale(1.35); }
+    .layer-front  { transform: translateZ(0); }
+
+    /* Hero overlay gradient */
+    .hero-gradient {
+      background: radial-gradient(1200px 600px at 20% 20%, rgba(12,15,28,.55), transparent 60%), linear-gradient(180deg, rgba(5,8,20,.85), rgba(5,8,20,.35) 30%, rgba(5,8,20,.85));
+    }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.show { opacity:1; transform: translateY(0); }
+
+    /* Gold text util */
+    .text-gold { color: var(--gold); }
+    .bg-gold   { background-color: var(--gold); }
+    .border-gold { border-color: var(--gold); }
+  </style>
 </head>
 
-<body class="font-modern text-gray-800">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Hamburger Menu -->
-                {{-- <button class="text-white hover:text-gold-300 transition-colors" id="menu-btn">
-                    <div class="space-y-1">
-                        <div class="w-6 h-0.5 bg-current"></div>
-                        <div class="w-6 h-0.5 bg-current"></div>
-                        <div class="w-6 h-0.5 bg-current"></div>
-                    </div>
-                    <span class="ml-2 text-sm font-light tracking-widest uppercase">Menu</span>
-                </button> --}}
-                
-                <!-- Brand Logo -->
-                <div class="text-center">
-                    <h1 class="text-3xl font-calligraphy font-bold text-white">
-                        dey's
-                    </h1>
-                    <p class="text-xs text-white/80 font-light tracking-widest uppercase">
-                        Hotel & Resort
-                    </p>
-                </div>
-                
-                <!-- Action Buttons -->
-                <div class="flex items-center space-x-6">
-                    <button class="text-white hover:text-gold-300 transition-colors text-sm font-light tracking-widest uppercase">
-                        Apply
-                    </button>
-                    <div class="w-px h-6 bg-white/30"></div>
-                    <button class="text-white hover:text-gold-300 transition-colors text-sm font-light tracking-widest uppercase">
-                        Login
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body class="copy text-slate-100 bg-[var(--ink)] selection:bg-amber-300 selection:text-slate-900">
+  <!-- NAVBAR -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-all">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between py-4">
+        <a href="#" class="flex items-center space-x-3">
+          <span class="brand text-4xl leading-none text-gold">dey's</span>
+          <span class="tracking-wider uppercase text-xs text-slate-300">Hotel & Resort</span>
+        </a>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center parallax"
-             style="background-image: url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2149&q=80')">
-        
-        <div class="absolute inset-0 hero-overlay"></div>
-        
-        <!-- Grid Overlay -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="w-full h-full" style="background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(255,255,255,0.1) 100px, rgba(255,255,255,0.1) 101px),
-                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(255,255,255,0.1) 100px, rgba(255,255,255,0.1) 101px)">
-            </div>
-        </div>
-        
-        <!-- Hero Content -->
-        <div class="relative z-10 max-w-7xl mx-auto px-4 py-20">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
-                <div class="text-white animate-slide-up">
-                    <div class="mb-8">
-                        <div class="w-16 h-0.5 bg-gold-400 mb-6"></div>
-                        <h1 class="text-5xl md:text-7xl font-luxury font-light leading-tight mb-6">
-                            Unlock Your<br>
-                            <span class="font-semibold">Best Stays</span>
-                        </h1>
-                        <p class="text-lg md:text-xl leading-relaxed mb-8 max-w-lg opacity-90">
-                            Welcome to luxury, where every moment becomes an experience of 
-                            comfort, elegance and personal service. With lavish amenities, 
-                            sophisticated design and attention to detail, our hotel caters to guests 
-                            seeking a luxurious and exclusive stay.
-                        </p>
-                        <button class="luxury-button text-black px-8 py-3 rounded-full font-semibold flex items-center group">
-                            Book Now 
-                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Right Content - Video Preview -->
-                <div class="animate-scale-in" style="animation-delay: 0.4s;">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
-                             alt="Hotel Video Preview" 
-                             class="w-full h-64 object-cover">
-                        <div class="absolute inset-0 video-overlay flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <div class="bg-white/20 backdrop-blur-sm rounded-full p-4 mb-3 inline-block">
-                                    <i class="fas fa-play text-2xl"></i>
-                                </div>
-                                <h3 class="text-lg font-semibold mb-1">Watch A Video</h3>
-                                <p class="text-sm opacity-80">About Us</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="hover:text-gold">Home</a>
+          <a href="#suites" class="hover:text-gold">Suites</a>
+          <a href="#dining" class="hover:text-gold">Dining</a>
+          <a href="#events" class="hover:text-gold">Weddings & Events</a>
+          <a href="#contact" class="hover:text-gold">Contact</a>
+        </nav>
 
-    <!-- Second Section -->
-    <section class="py-20 section-bg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <!-- Left Content -->
-                <div class="animate-slide-up">
-                    <div class="mb-6">
-                        <p class="text-sm font-medium text-sage-600 tracking-widest uppercase mb-4">
-                            The Luxury Hotel
-                        </p>
-                        <div class="w-16 h-0.5 bg-gold-500 mb-8"></div>
-                        <h2 class="text-4xl md:text-6xl font-luxury font-light leading-tight mb-6">
-                            Enjoy a Luxury<br>
-                            <span class="font-semibold">Experience</span>
-                        </h2>
-                        <p class="text-lg leading-relaxed mb-8 text-sage-700 max-w-lg">
-                            Discover unparalleled luxury in every detail. From our meticulously 
-                            designed spaces to our world-class service, every moment at Dey's 
-                            is crafted to exceed your expectations and create lasting memories.
-                        </p>
-                        <button class="luxury-button text-black px-8 py-3 rounded-full font-semibold flex items-center group">
-                            Book Now 
-                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Right Content - Hotel Image -->
-                <div class="animate-scale-in" style="animation-delay: 0.3s;">
-                    <div class="rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
-                             alt="Luxury Hotel Experience" 
-                             class="w-full h-[600px] object-cover">
-                    </div>
-                </div>
-            </div>
+        <div class="hidden md:flex items-center space-x-3">
+          <button class="px-5 py-2 rounded-full border border-slate-500/50 hover:border-gold hover:text-gold transition-colors">Login</button>
+          <a href="#booking" class="px-6 py-2 rounded-full bg-gold text-slate-900 font-semibold hover:opacity-90 transition-opacity sheen">Book Now</a>
         </div>
-    </section>
 
-    <!-- Booking Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="glass-card rounded-3xl p-8 md:p-12 shadow-2xl animate-slide-up">
-                <!-- Booking Form Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                    <!-- Check In -->
-                    <div class="space-y-3">
-                        <label class="block text-sm font-semibold text-gray-700 tracking-wide uppercase">
-                            Check In
-                        </label>
-                        <div class="relative">
-                            <input type="date" 
-                                   class="input-modern w-full px-4 py-4 rounded-xl text-gray-800 font-medium text-lg bg-white"
-                                   value="2025-03-22">
-                            <div class="text-sm text-gray-500 mt-2">Arrival Date</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Check Out -->
-                    <div class="space-y-3">
-                        <label class="block text-sm font-semibold text-gray-700 tracking-wide uppercase">
-                            Check Out
-                        </label>
-                        <div class="relative">
-                            <input type="date" 
-                                   class="input-modern w-full px-4 py-4 rounded-xl text-gray-800 font-medium text-lg bg-white"
-                                   value="2025-04-02">
-                            <div class="text-sm text-gray-500 mt-2">Departure Date</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Adults -->
-                    <div class="space-y-3">
-                        <label class="block text-sm font-semibold text-gray-700 tracking-wide uppercase">
-                            Adults
-                        </label>
-                        <div class="relative">
-                            <select class="input-modern w-full px-4 py-4 rounded-xl text-gray-800 font-medium text-lg bg-white">
-                                <option>1 Adult</option>
-                                <option selected>2 Adults</option>
-                                <option>3 Adults</option>
-                                <option>4 Adults</option>
-                            </select>
-                            <div class="text-sm text-gray-500 mt-2">Adults</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Children -->
-                    <div class="space-y-3">
-                        <label class="block text-sm font-semibold text-gray-700 tracking-wide uppercase">
-                            Children
-                        </label>
-                        <div class="relative">
-                            <select class="input-modern w-full px-4 py-4 rounded-xl text-gray-800 font-medium text-lg bg-white">
-                                <option selected>0 Children</option>
-                                <option>1 Child</option>
-                                <option>2 Children</option>
-                                <option>3 Children</option>
-                            </select>
-                            <div class="text-sm text-gray-500 mt-2">Children</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Search Button -->
-                    <div class="space-y-3">
-                        <label class="block text-sm font-semibold text-transparent tracking-wide uppercase">
-                            Search
-                        </label>
-                        <button class="luxury-button w-full px-6 py-4 rounded-xl text-black font-bold text-lg h-16 flex items-center justify-center">
-                            Search Room
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <button id="menuBtn" class="md:hidden p-2 rounded-lg border border-slate-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-800 bg-slate-900/70 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-6 py-4 space-y-3">
+        <a href="#home" class="block">Home</a>
+        <a href="#suites" class="block">Suites</a>
+        <a href="#dining" class="block">Dining</a>
+        <a href="#events" class="block">Weddings & Events</a>
+        <a href="#contact" class="block">Contact</a>
+        <a href="#booking" class="inline-block mt-2 px-5 py-2 rounded-full bg-gold text-slate-900 font-semibold">Book Now</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Services Section -->
-    <section class="py-24 section-bg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16 animate-slide-up">
-                <p class="text-sm font-medium text-sage-600 tracking-widest uppercase mb-4">
-                    Our Signature Services
-                </p>
-                <div class="w-16 h-0.5 bg-gold-500 mx-auto mb-8"></div>
-                <h2 class="text-4xl md:text-6xl font-luxury font-light leading-tight mb-6">
-                    Luxury <span class="font-semibold">Experiences</span>
-                </h2>
-                <p class="text-lg text-sage-700 max-w-2xl mx-auto">
-                    Discover our range of premium services designed to make your stay unforgettable
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Rooms -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-scale-in">
-                    <div class="bg-gradient-to-br from-sage-500 to-sage-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-bed text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-luxury font-semibold mb-4">Luxury Rooms</h3>
-                    <p class="text-sage-600 leading-relaxed mb-6">
-                        Elegantly designed rooms with premium amenities and breathtaking views.
-                    </p>
-                    <button class="text-gold-600 font-semibold hover:text-gold-700 transition-colors">
-                        Explore Rooms →
-                    </button>
-                </div>
-                
-                <!-- Conference -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-scale-in" style="animation-delay: 0.1s;">
-                    <div class="bg-gradient-to-br from-blue-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-users text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-luxury font-semibold mb-4">Conference</h3>
-                    <p class="text-sage-600 leading-relaxed mb-6">
-                        State-of-the-art meeting facilities for successful business events.
-                    </p>
-                    <button class="text-gold-600 font-semibold hover:text-gold-700 transition-colors">
-                        Book Meeting →
-                    </button>
-                </div>
-                
-                <!-- Banquet -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-scale-in" style="animation-delay: 0.2s;">
-                    <div class="bg-gradient-to-br from-purple-500 to-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-glass-cheers text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-luxury font-semibold mb-4">Banquet</h3>
-                    <p class="text-sage-600 leading-relaxed mb-6">
-                        Grand celebration halls with exceptional catering and service.
-                    </p>
-                    <button class="text-gold-600 font-semibold hover:text-gold-700 transition-colors">
-                        Plan Event →
-                    </button>
-                </div>
-                
-                <!-- Ceremony -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-scale-in" style="animation-delay: 0.3s;">
-                    <div class="bg-gradient-to-br from-pink-500 to-pink-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-heart text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-luxury font-semibold mb-4">Ceremony</h3>
-                    <p class="text-sage-600 leading-relaxed mb-6">
-                        Magical wedding venues and bespoke ceremony planning services.
-                    </p>
-                    <button class="text-gold-600 font-semibold hover:text-gold-700 transition-colors">
-                        Dream Wedding →
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="py-24 parallax relative"
-             style="background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-        
-        <div class="absolute inset-0 hero-overlay"></div>
-        
-        <div class="relative z-10 max-w-4xl mx-auto text-center px-4">
-            <div class="animate-slide-up">
-                <div class="w-16 h-0.5 bg-gold-400 mx-auto mb-8"></div>
-                <h2 class="text-4xl md:text-6xl font-luxury font-light text-white leading-tight mb-6">
-                    Ready to Experience<br>
-                    <span class="font-semibold text-gold-300">Luxury?</span>
-                </h2>
-                <p class="text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
-                    Join thousands of discerning guests who have chosen Dey's for their most important moments
-                </p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                    <button class="luxury-button text-black px-12 py-4 rounded-full text-lg font-bold">
-                        Book Your Stay
-                    </button>
-                    <button class="border-2 border-white text-white px-12 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
-                        Contact Us
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <!-- Brand -->
-                <div class="md:col-span-2">
-                    <h3 class="text-4xl font-calligraphy font-bold mb-4">dey's</h3>
-                    <p class="text-gold-200 text-lg font-luxury mb-6">Hotel & Resort</p>
-                    <p class="text-gray-400 leading-relaxed mb-6 max-w-md">
-                        Experience the pinnacle of luxury hospitality where every detail is 
-                        crafted to perfection for unforgettable moments.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
-                            <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Services -->
-                <div>
-                    <h4 class="text-xl font-luxury font-bold mb-6 text-gold-300">Services</h4>
-                    <ul class="space-y-3 text-gray-300">
-                        <li><a href="#" class="hover:text-gold-300 transition-colors">Luxury Rooms</a></li>
-                        <li><a href="#" class="hover:text-gold-300 transition-colors">Conference Halls</a></li>
-                        <li><a href="#" class="hover:text-gold-300 transition-colors">Banquet Events</a></li>
-                        <li><a href="#" class="hover:text-gold-300 transition-colors">Wedding Ceremonies</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <h4 class="text-xl font-luxury font-bold mb-6 text-gold-300">Contact</h4>
-                    <div class="space-y-3 text-gray-300">
-                        <p class="flex items-start">
-                            <i class="fas fa-map-marker-alt mr-3 text-gold-400 mt-1"></i>
-                            123 Luxury Boulevard<br>Delhi 110001, India
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-phone mr-3 text-gold-400"></i>
-                            +91 XXX XXX XXXX
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-envelope mr-3 text-gold-400"></i>
-                            info@deyshotel.com
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-gray-400">
-                    &copy; 2025 <span class="font-calligraphy text-gold-300">Dey's</span> Hotel & Resort. All Rights Reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-gray-900/95 backdrop-blur-md z-50 hidden">
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <button id="close-menu" class="absolute top-8 right-8 text-white text-2xl">
-                <i class="fas fa-times"></i>
-            </button>
-            <a href="#" class="text-2xl text-white hover:text-gold-300 font-luxury">Home</a>
-            <a href="#" class="text-2xl text-white hover:text-gold-300 font-luxury">Rooms</a>
-            <a href="#" class="text-2xl text-white hover:text-gold-300 font-luxury">Services</a>
-            <a href="#" class="text-2xl text-white hover:text-gold-300 font-luxury">About</a>
-            <a href="#" class="text-2xl text-white hover:text-gold-300 font-luxury">Contact</a>
-        </div>
+  <!-- HERO with multi-layer parallax -->
+  <main id="home" class="parallax min-h-screen">
+    <!-- Back image -->
+    <div aria-hidden="true" class="layer-back absolute inset-0">
+      <img src="{{ asset('weed4.jpg') }}" class="w-full h-full object-cover" alt="">
     </div>
 
-    <!-- JavaScript -->
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-        });
-        
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
+    <!-- Mid floating decor -->
+    <div aria-hidden="true" class="layer-mid absolute inset-0 opacity-50 mix-blend-screen">
+      <img src="" alt="">
+    </div>
 
-        // Dynamic navbar on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-                nav.classList.add('shadow-lg');
-                nav.querySelectorAll('button, h1, p').forEach(el => {
-                    el.classList.add('text-gray-800');
-                    el.classList.remove('text-white');
-                });
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.1)';
-                nav.classList.remove('shadow-lg');
-                nav.querySelectorAll('button, h1, p').forEach(el => {
-                    el.classList.add('text-white');
-                    el.classList.remove('text-gray-800');
-                });
-            }
-        });
+    <!-- Foreground content -->
+    <section class="relative layer-front min-h-screen hero-gradient flex items-center">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="max-w-3xl">
+          <p class="uppercase tracking-[.3em] text-xs text-slate-300/80 mb-6">Where time slows, and luxury whispers</p>
+          <h1 class="text-5xl md:text-7xl font-extralight leading-tight">
+            Unlock Your Most
+            <span class="font-semibold text-gold">Memorable</span><br/>Stays at <span class="font-semibold brand text-gold leading-none">dey's</span>
+          </h1>
+          <p class="mt-6 text-lg text-slate-300/90">
+            A refined sanctuary by the water. Intuitive service, artisanal dining, and suites bathed in warm modernism.
+          </p>
 
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="#booking" class="px-8 py-4 rounded-full bg-gold text-slate-900 font-semibold sheen text-center">Book Your Stay</a>
+            <a href="#video" class="px-8 py-4 rounded-full glass border border-slate-100/20 text-slate-100 flex items-center justify-center gap-3">
+              <span class="inline-grid place-items-center w-9 h-9 rounded-full bg-white/20">
+                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              Watch our story
+            </a>
+          </div>
+        </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) scale(1)';
-                }
-            });
-        }, observerOptions);
+        <!-- Booking bar floating -->
+        <div id="booking" class="mt-16 md:mt-24">
+          <div class="glass rounded-2xl p-4 md:p-6 shadow-2xl ring-1 ring-white/10">
+            <form class="grid grid-cols-2 md:grid-cols-5 gap-3">
+              <div>
+                <label class="text-xs uppercase tracking-wider text-slate-300">Check In</label>
+                <input type="date" class="mt-1 w-full bg-transparent border border-slate-700 rounded-xl px-3 py-3 focus:outline-none focus:border-gold">
+              </div>
+              <div>
+                <label class="text-xs uppercase tracking-wider text-slate-300">Check Out</label>
+                <input type="date" class="mt-1 w-full bg-transparent border border-slate-700 rounded-xl px-3 py-3 focus:outline-none focus:border-gold">
+              </div>
+              <div>
+                <label class="text-xs uppercase tracking-wider text-slate-300">Adults</label>
+                <select class="mt-1 w-full bg-transparent border border-slate-700 rounded-xl px-3 py-3 focus:outline-none focus:border-gold">
+                  <option class="text-slate-900">1</option><option class="text-slate-900">2</option><option class="text-slate-900">3</option><option class="text-slate-900">4</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs uppercase tracking-wider text-slate-300">Children</label>
+                <select class="mt-1 w-full bg-transparent border border-slate-700 rounded-xl px-3 py-3 focus:outline-none focus:border-gold">
+                  <option class="text-slate-900">0</option><option class="text-slate-900">1</option><option class="text-slate-900">2</option><option class="text-slate-900">3</option>
+                </select>
+              </div>
+              <div class="flex items-end">
+                <button class="w-full px-6 py-3 rounded-xl bg-gold text-slate-900 font-semibold sheen">Search Rooms</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        document.querySelectorAll('.animate-slide-up, .animate-scale-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px) scale(0.95)';
-            observer.observe(el);
-        });
+  <!-- SUITES -->
+  <section id="suites" class="relative py-24 bg-gradient-to-b from-slate-950 to-slate-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <p class="text-gold uppercase tracking-[.25em] text-xs mb-4">The Suites</p>
+          <h2 class="text-4xl md:text-5xl font-light leading-tight">Modern serenity with handcrafted detail</h2>
+          <p class="mt-5 text-slate-300/90">Floor‑to‑ceiling vistas, bespoke furniture, and quietly intelligent lighting. Awake to the soft shimmer of the bay and end with a bath ritual infused with botanicals.</p>
+          <div class="mt-8 flex gap-4">
+            <a href="#" class="px-6 py-3 rounded-full bg-gold text-slate-900 font-semibold sheen">Explore Suites</a>
+            <a href="#" class="px-6 py-3 rounded-full border border-slate-600 hover:border-gold hover:text-gold transition-colors">View Gallery</a>
+          </div>
+        </div>
 
-        // Form submission
-        document.querySelector('.luxury-button').addEventListener('click', (e) => {
-            if (e.target.textContent.includes('Search Room')) {
-                e.preventDefault();
-                alert('Searching for available rooms... You will be redirected to our booking system shortly!');
-            }
-        });
-    </script>
+        <div class="reveal">
+          <div class="grid grid-cols-3 gap-4">
+            <img class="col-span-2 h-72 w-full object-cover rounded-2xl shadow-2xl" src="{{ asset('hall.jpg') }}" alt="">
+            <img class="col-span-1 h-72 w-full object-cover rounded-2xl" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1374&auto=format&fit=crop" alt="">
+            <img class="col-span-1 h-56 w-full object-cover rounded-2xl" src="{{ asset('weed2.jpg') }}" alt="">
+            <img class="col-span-2 h-56 w-full object-cover rounded-2xl" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=2060&auto=format&fit=crop" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DINING -->
+  <section id="dining" class="relative py-24 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2060&auto=format&fit=crop')] bg-cover bg-center">
+    <div class="absolute inset-0 bg-slate-900/70"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <h2 class="text-4xl md:text-5xl font-light leading-tight">Epicurean journeys, under warm amber light</h2>
+          <p class="mt-5 text-slate-200/90">Seasonal tasting menus, wood‑fire aromas, and a cellar curated around coastal terroir.</p>
+          <div class="mt-8 flex gap-4">
+            <a href="#" class="px-6 py-3 rounded-full bg-gold text-slate-900 font-semibold sheen">Reserve a Table</a>
+            <a href="#" class="px-6 py-3 rounded-full border border-white/30 hover:border-gold hover:text-gold transition-colors">View Menu</a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="glass rounded-3xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2060&auto=format&fit=crop" class="w-full h-[420px] object-cover" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEDDINGS & EVENTS -->
+  <section id="events" class="relative py-26 bg-gradient-to-b from-slate-900 to-slate-950">
+    <div class="max-w-7xl mt-x mx-auto px-6">
+      <div class="flex items-end justify-between gap-6">
+        <div class="reveal">
+          <p class="text-gold uppercase tracking-[.25em] text-xs mb-3">Occasions</p>
+          <h2 class="text-4xl md:text-5xl font-light">Weddings, Ceremonies & Conferences</h2>
+          <p class="mt-4 text-slate-300/90 max-w-2xl">From intimate vows by the reflecting pool to grand ballroom receptions and executive summits—our dedicated planners orchestrate every detail with quiet perfection.</p>
+        </div>
+        <a href="#" class="hidden md:inline-block px-6 py-3 rounded-full border border-slate-600 hover:border-gold hover:text-gold transition-colors">Download Brochure</a>
+      </div>
+
+      <!-- Cards -->
+      <div class="mt-12 grid md:grid-cols-3 gap-8">
+        <!-- Weddings -->
+        <article class="reveal glass rounded-3xl overflow-hidden shadow-2xl">
+          <div class="h-56 w-full overflow-hidden">
+            <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="{{ asset('weed2.jpg') }}" alt="Wedding">
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold">Weddings</h3>
+            <p class="mt-2 text-slate-300/90">Garden terrace ceremonies framed by coastal breeze, followed by candlelit banquets.</p>
+            <div class="mt-5 flex items-center justify-between">
+              <span class="text-gold font-semibold">Up to 280 guests</span>
+              <a href="#" class="px-4 py-2 rounded-full bg-gold text-slate-900 font-semibold">Plan Now</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ceremonies -->
+        <article class="reveal glass rounded-3xl overflow-hidden shadow-2xl">
+          <div class="h-56 w-full overflow-hidden">
+            <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="{{ asset('weed4.jpg') }}" alt="Ceremony">
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold">Ceremonies</h3>
+            <p class="mt-2 text-slate-300/90">Cultural rituals and milestone moments set against refined, light‑drenched spaces.</p>
+            <div class="mt-5 flex items-center justify-between">
+              <span class="text-gold font-semibold">Indoor & Outdoor</span>
+              <a href="#" class="px-4 py-2 rounded-full bg-gold text-slate-900 font-semibold">Enquire</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Conferences -->
+        <article class="reveal glass rounded-3xl overflow-hidden shadow-2xl">
+          <div class="h-56 w-full overflow-hidden">
+            <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1974&auto=format&fit=crop" alt="Conference">
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold">Conferences</h3>
+            <p class="mt-2 text-slate-300/90">Acoustic‑treated halls, modular seating, LED walls, and executive breakout suites.</p>
+            <div class="mt-5 flex items-center justify-between">
+              <span class="text-gold font-semibold">Up to 600 delegates</span>
+              <a href="#" class="px-4 py-2 rounded-full bg-gold text-slate-900 font-semibold">Get Quote</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION PARALLAX STRIP -->
+  <section class="relative">
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1501117716987-c8e2a3a67e0e?q=80&w=2060&auto=format&fit=crop" class="w-full h-full object-cover" alt="">
+    </div>
+    <div class="relative py-24 bg-slate-900/70 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h3 class="text-3xl md:text-4xl font-light">Your celebration deserves a timeless address</h3>
+        <p class="mt-3 text-slate-200/90">Let our planners craft an itinerary that feels effortless and unforgettable.</p>
+        <a href="#events" class="mt-6 inline-block px-8 py-4 rounded-full bg-gold text-slate-900 font-semibold sheen">Start Planning</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
+      <div class="reveal">
+        <h3 class="text-3xl md:text-4xl font-light">We’d love to host your next chapter</h3>
+        <p class="mt-4 text-slate-300/90">123 Luxury Avenue, Premium District, City 12345</p>
+        <div class="mt-6 space-y-2 text-slate-300">
+          <p>+1 (555) 123-4567</p>
+          <p>reservations@deyshotel.com</p>
+        </div>
+        <div class="mt-8 flex gap-3">
+          <a class="px-5 py-3 rounded-full border border-slate-700 hover:border-gold hover:text-gold transition-colors" href="#">Directions</a>
+          <a class="px-5 py-3 rounded-full bg-gold text-slate-900 font-semibold sheen" href="#booking">Book Now</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="glass rounded-3xl p-6">
+          <iframe class="w-full rounded-2xl h-80 grayscale-[20%]" src="https://maps.google.com/maps?q=hotel&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black py-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <span class="brand text-3xl text-gold">Dey's</span>
+        <span class="text-xs tracking-wider uppercase text-slate-400">Hotel & Resort</span>
+      </div>
+      <p class="text-slate-400">&copy; 2025 Dey’s. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a class="hover:text-gold" href="#">Instagram</a>
+        <a class="hover:text-gold" href="#">Facebook</a>
+        <a class="hover:text-gold" href="#">X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden'));
+
+    // Sticky nav background
+    const nav = document.getElementById('nav');
+    const onScrollNav = () => {
+      if (window.scrollY > 60) {
+        nav.classList.add('backdrop-blur','bg-slate-900/70','border-b','border-white/10');
+      } else {
+        nav.classList.remove('backdrop-blur','bg-slate-900/70','border-b','border-white/10');
+      }
+    };
+    window.addEventListener('scroll', onScrollNav); onScrollNav();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+      })
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+  </script>
 </body>
 </html>
